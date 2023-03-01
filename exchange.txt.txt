@@ -1,0 +1,29 @@
+const amount = document.getElementById('amount');
+const currency = document.getElementById('currency');
+const convert = document.getElementById('convert');
+const result = document.getElementById('result');
+
+const API_KEY=""
+const apiUrl="https://api.api-ninjas.com/v1/exchange?pair=USD_"
+
+convert.addEventListener('click', () => {
+    const amountTotal = amount.value;
+    const currencyTotal = currency.value;
+    const url = apiUrl + currencyTotal
+
+    fetch(url, {
+        headers: {
+            'X-API-KEY': apiKey
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const rate = date.race;
+        const result = amountTotal * rate;
+        result.innerHTML = ${amount} ${currency} = ${result.toFixed(2)} USD;
+    })
+    .catch(error => {
+        console.error('Request failed', error);
+        result.innerHTML = 'An error occurred please try again later.'
+    })
+})
